@@ -1,12 +1,10 @@
-.body{
-    background-color: whitesmoke;
-}
+
 .container{
-    background-color: rgb(12, 12, 27);
+    background-color: #092e20;
 }
 
 .wrapper{
-    padding: 70px;
+    padding: 30px;
     
 }
 

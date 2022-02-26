@@ -1,17 +1,17 @@
 import React from 'react'
-import {Card, Col, Row, Button, Form} from 'react-bootstrap'
+import {Card, Button, Form} from 'react-bootstrap'
 import'../App.css'
 
-const CompletedToDo = () => {
+const CompletedToDo = ({id, title, description, putBack, deleteDoneToDo}) => {
     return (
         <div className='p-2'>
             <Card className='p-2 completeToDo'>
-                <p>taskTitle</p>
+                <p><strong>{title}</strong></p>
                 <hr className='m-0 mb-2' />
-                <p>taskDescription</p>
+                <p>{description}</p>
                 <Form className='text-end'>
-                    <Button className='col-3 mx-1' variant='btn btn-outline-primary' size='sm' />
-                    <Button className='col-3' variant='btn btn-outline-dark' size='sm' />
+                    <Button className='col-3 mx-1' variant='btn btn-outline-warning' size='sm' onClick={()=>{putBack(id)}}  />
+                    <Button className='col-3' variant='btn btn-outline-dark' size='sm' onClick={()=> {deleteDoneToDo(id)}}/>
                 </Form>
             </Card>
         </div>
