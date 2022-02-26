@@ -157,7 +157,7 @@ function App() {
                 <Row>
 
                     <Col className='col-3'>
-                        <Card>
+                        <Card className='addBox'>
                             <AddToDo addToDo={addToDo} />
                         </Card>
                         <Row>
@@ -214,9 +214,3 @@ function App() {
 }
 
 export default App;
-//  {/* <>
-//       <h3>Hello</h3>
-//       <AddToDo />
-//       <ToDo />
-//       <CompletedToDo />
-//     </> */}

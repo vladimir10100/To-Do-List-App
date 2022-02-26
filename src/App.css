@@ -15,3 +15,7 @@
 .completeToDo p{
     margin: 0px;
 }
+
+.container{
+    box-shadow: 10px 10px #40bedd;
+}
