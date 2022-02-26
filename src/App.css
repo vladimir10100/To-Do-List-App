@@ -1,0 +1,19 @@
+.body{
+    background-color: whitesmoke;
+}
+.container{
+    background-color: rgb(12, 12, 27);
+}
+
+.wrapper{
+    padding: 70px;
+    
+}
+
+.todoCard p{
+    margin:0px
+}
+
+.completeToDo p{
+    margin: 0px;
+}
