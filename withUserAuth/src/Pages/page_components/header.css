@@ -1,0 +1,27 @@
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 30px 5px 50px;
+    background-color: whitesmoke;
+    border-bottom: 5px solid grey;
+}
+
+.project{
+    color: rgb(163, 5, 5);
+}
+
+
+.link {
+    padding: 0px 10px;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+.link :hover{
+    color: purple;
+    cursor: pointer;
+}

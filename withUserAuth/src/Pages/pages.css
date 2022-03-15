@@ -1,0 +1,39 @@
+body{
+    text-align: center;
+}
+
+.login {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.form-login{
+    margin-top: 50px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    border: solid 2px rgb(75, 75, 75);
+    border-radius: 10px;
+}
+
+#username, #password {
+    text-align: left;
+    padding-top: 10px;
+}
+
+#submit{
+    margin-top: 20px;
+}
+
+
+
+
+.home{
+    padding: 70px;
+    color: black;
+}
