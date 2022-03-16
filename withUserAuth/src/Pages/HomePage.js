@@ -245,8 +245,7 @@ const HomePage = () => {
                                 </div>
                                 {todo.map((item, index) => (
                                 <ToDo key={index} id={item.id} title={item.title} description={item.description}
-                                doneToDo={doneToDo} deleteToDo={deleteToDo} editToDo={editToDo}
-                                />
+                                doneToDo={doneToDo} deleteToDo={deleteToDo} editToDo={editToDo}/>
                                 ))}
                             </Card>
                         </Col>

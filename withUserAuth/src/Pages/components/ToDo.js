@@ -3,6 +3,8 @@ import {Form, Card, Button, Col, Row, Modal} from 'react-bootstrap'
 
 
 const ToDo = ({id, title, description, doneToDo, deleteToDo, editToDo}) => {
+
+    
     const [show, setShow] = useState(false)
 
     const [newTitle, setTitle] = useState(title)
@@ -14,8 +16,11 @@ const ToDo = ({id, title, description, doneToDo, deleteToDo, editToDo}) => {
         setDescription(description)
     }
 
-    const handleShow = () => setShow(true)
-
+    const handleShow = () => {
+        setShow(true)
+        setTitle(title)
+        setDescription(description)
+    }
     const saveChanges = (title, description) => {
         handleClose()
         const todo = {id, title, description}
@@ -23,6 +28,9 @@ const ToDo = ({id, title, description, doneToDo, deleteToDo, editToDo}) => {
         setTitle(title)
         setDescription(description)
     }
+
+
+    console.log(title, description)
     return (
         <div className='p-2'>
             
