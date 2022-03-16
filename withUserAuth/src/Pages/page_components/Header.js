@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <div className='header'>
             
-            <h3 className='project'>Django DRF React</h3>
+            <h3 className='project'>Django DRF x React</h3>
             <div className='link'>
                 {user && <a>{user.username}</a>}
                 <Link className='link' to='/'>Home</Link>

@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Form, Button} from 'react-bootstrap'
+import AuthContext from '../../Context/AuthContext'
 
 const AddToDo = ({addToDo}) =>{
 
+    const {user} = useContext(AuthContext)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
 
@@ -11,7 +13,9 @@ const AddToDo = ({addToDo}) =>{
         addToDo({
             title,
             description,
-            completed:false
+            completed:false,
+            deleted: false,
+            user: user.user_id
         })
         setTitle('')
         setDescription('')
@@ -30,9 +34,8 @@ const AddToDo = ({addToDo}) =>{
                     <Form.Label className='mb-0'>description</Form.Label>
                     <Form.Control as='textarea' value={description} onChange={e=> setDescription(e.target.value)}/>
                 </Form.Group>
-                <Form className='text-end'>
                     <Button variant='btn btn-outline-dark' size='sm' type='submit' className='my-3' onClick={addToDoHandler}>addTask</Button>
-                </Form>
+                
             </Form>
         </div>
     )

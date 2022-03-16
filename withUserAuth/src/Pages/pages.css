@@ -24,6 +24,7 @@ body{
 #username, #password {
     text-align: left;
     padding-top: 10px;
+    
 }
 
 #submit{
@@ -34,6 +35,6 @@ body{
 
 
 .home{
-    padding: 70px;
+    padding: 30px 70px;
     color: black;
 }

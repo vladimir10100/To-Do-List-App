@@ -90,12 +90,28 @@ const HomePage = () => {
         }
     }
 
+    const editToDo = async editToDo =>{
+        try{
+            await fetch(`http://127.0.0.1:8000/api/todo/${editToDo.id}/`, {
+                method:'PUT',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization': 'Bearer '+ String(authToken.access)
+                },
+                body: JSON.stringify(editToDo)
+            })
+            getToDo()
+        }catch(err){
+            console.log(err)
+        }
+    }
+
 
     const doneToDo = async (id) =>{
         try{
             const item = todo.filter(item => item.id === id)[0]
             item.completed = true
-            await fetch('http://127.0.0.1:8000/api/todo/',{
+            await fetch(`http://127.0.0.1:8000/api/todo/${id}/`,{
                 method:'PUT',
                 headers:{
                     'Content-Type':'application/json',
@@ -113,7 +129,7 @@ const HomePage = () => {
         try{
             const item = todo.filter(item => item.id === id)[0]
             item.deleted = true
-            await fetch('http://127.0.0.1:8000/api/todo/', {
+            await fetch(`http://127.0.0.1:8000/api/todo/${id}/`, {
                 method:'PUT',
                 headers:{
                     'Content-Type':'application/json',
@@ -127,15 +143,75 @@ const HomePage = () => {
         }
     }
 
+    const putBack = async id => {
+        try{
+            const item = done.filter(item => item.id ===id)[0]
+            item.completed = false
+            await fetch(`http://127.0.0.1:8000/api/todo/${id}/`, {
+                method:'PUT',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization': 'Bearer '+ String(authToken.access)
+                },
+                body: JSON.stringify(item)
+            })
+            getToDo()
+        }catch(err){
+            console.log(err)
+        }
+    }
 
+    const deleteDoneToDo = async id => {
+        try{
+            const item = done.filter(item => item.id === id)[0]
+            item.deleted = true
+            await fetch(`http://127.0.0.1:8000/api/todo/${id}/`, {
+                method:'PUT',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization': 'Bearer '+ String(authToken.access)
+                },
+                body: JSON.stringify(item)
+            })
+            getToDo()
+        }catch(err){
+            console.log(err)
+        }
 
+    }
 
+    const greatPutBack = async id => {
+        try{
+            const item = trash.filter(item => item.id ===id)[0]
+            item.deleted = false
+            await fetch(`http://127.0.0.1:8000/api/todo/${id}/`, {
+                method:'PUT',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization': 'Bearer '+ String(authToken.access)
+                },
+                body: JSON.stringify(item)
+            })
+            getToDo()
+        }catch(err){
+            console.log(err)
+        }
+    }
 
-
-
-
-
-
+    const greatDelete = async id =>{
+        try{
+            await fetch(`http://127.0.0.1:8000/api/todo/${id}/`, {
+                method:'DELETE',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization': 'Bearer '+ String(authToken.access)
+                },
+            })
+            getToDo()
+        }catch(err){
+            console.log(err)
+        }
+    }
 
 
 
@@ -145,12 +221,17 @@ const HomePage = () => {
             <Container className='border-dark border-radius rounded p-3 container'>
                     <Row>
                         <Col className='col-3'>
-                            <Card><AddToDo addToDo={addToDo}/></Card>
+                            <Card>
+                                <AddToDo addToDo={addToDo} />
+                            </Card>
                             <Col className='pt-3'>
                                 <Card className='p-2'>
                                     <h5>Deleted Tasks</h5>
                                     <hr className='my-0 mb-1' />
-                                    <DeletedToDo />
+                                    {trash.map((item, index) => (
+                                        <DeletedToDo key={index} id={item.id} title={item.title} description={item.description}
+                                        greatPutBack={greatPutBack} greatDelete={greatDelete} />
+                                    ))}
                                 </Card>
                             </Col>
                         </Col>
@@ -164,7 +245,7 @@ const HomePage = () => {
                                 </div>
                                 {todo.map((item, index) => (
                                 <ToDo key={index} id={item.id} title={item.title} description={item.description}
-                                doneToDo={doneToDo} deleteToDo={deleteToDo}
+                                doneToDo={doneToDo} deleteToDo={deleteToDo} editToDo={editToDo}
                                 />
                                 ))}
                             </Card>
@@ -176,7 +257,10 @@ const HomePage = () => {
                                     <h5>Completed Tasks</h5>
                                     <hr className='my-0 mb-1' />
                                 </div>
-                                <CompletedToDo />
+                                {done.map((item, index) => (
+                                <CompletedToDo key={index} id={item.id} title={item.title} description={item.description}
+                                putBack={putBack} deleteDoneToDo={deleteDoneToDo}/> 
+                                ))}
                             </Card>
                         </Col>
                     </Row>

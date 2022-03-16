@@ -17,7 +17,7 @@ const LoginPage = () => {
                 <hr />
 
                 <label id='username'>Username: </label>
-                <input type='text' name='username' placeholder='username' />
+                <input type='text' name='username' placeholder='username' autocomplete="off"/>
                 <label id='password'>Password: </label>
                 <input type='password' name='password' placeholder='password' />
                 <input id='submit' type='submit' name='submit' value='Submit' />
